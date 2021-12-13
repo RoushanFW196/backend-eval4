@@ -4,14 +4,35 @@ const router=express.Router();
 const User=require("../models/user.model.js")
 
 
-router.post("/",(req,res)=>{
-    res.send("hello users")
-});
 
-router.post("/",(req,res)=>{
+
+const register=async(req, res)=>{
+    
+    const register_user=await User.create({
+        name: req.body.name, 
+        email: req.body.email,
+        password:req.body.password,
+        profile_photo_url: req.file.path,
+
+    });
+    res.send({register_user: register_user});
+
+
+
+
+
+}
+
+
+const login=(req, res)=>{
     res.send("login")
-})
+}
 
 
 
-module.exports=router;
+
+
+
+
+
+module.exports={register,login};

@@ -4,12 +4,12 @@ const app = express();
 
 const connect=require('./config/db.js')
 
-const usercontroller=require("./controller/user.controller.js");
+const {register,login}=require("./controller/user.controller.js");
 
 app.use(express.json());
 
-app.use("/register",usercontroller);
-app.use("/login",usercontroller);
+app.use("/register",register);
+app.use("/login",login);
 
 
 console.log("hello")
